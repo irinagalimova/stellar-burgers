@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 
 export const IngredientDetails = (): React.JSX.Element => {
   const { id } = useParams();
-  const ingredientData = useSelector((state) => state.ingredients.ingredients);
-  const ingredient = ingredientData.find((ing) => ing._id === id);
+  const ingredients = useSelector((state) => state.ingredients.ingredients);
+  const ingredient = ingredients.find((ing) => ing._id === id);
   const isLoading = useSelector((state) => state.ingredients.isLoading);
   const error = useSelector((state) => state.ingredients.error);
 

@@ -1,13 +1,7 @@
 import { orderBurgerApi } from '@/utils/burger-api';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import type { TOrder } from '@/utils/types';
-
-type TOrderState = {
-  order: TOrder | null;
-  isLoading: boolean;
-  error: unknown;
-};
+import type { TOrderState } from '@/utils/types';
 
 const initialState: TOrderState = {
   order: null,

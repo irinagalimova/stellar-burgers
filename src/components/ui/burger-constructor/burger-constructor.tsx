@@ -85,7 +85,7 @@ export const BurgerConstructorUI = ({
     )}
     <div className={clsx(styles.total, 'mt-10 mr-4')}>
       <div className={clsx(styles.cost, 'mr-10')}>
-        <p className={clsx(styles.text, 'mr-2')}>{price}</p>
+        <p className={clsx(styles.text, 'text mr-2')}>{price}</p>
         <CurrencyIcon type="primary" />
       </div>
       <Button htmlType="button" type="primary" size="large" onClick={onOrderClick}>
