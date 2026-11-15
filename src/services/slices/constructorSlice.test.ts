@@ -41,63 +41,65 @@ const secondIngredient = {
   id: 'constructor-ingredient-2',
 };
 
-test('неизвестный экшен и state undefined: возвращает initialState', () => {
-  const nextState = constructorSliceReducer(undefined, { type: 'UNKNOWN' });
+describe('Редьюсер конструктора бургера', () => {
+  test('неизвестный экшен и state undefined: возвращает initialState', () => {
+    const nextState = constructorSliceReducer(undefined, { type: 'UNKNOWN' });
 
-  expect(nextState).toEqual({
-    bun: null,
-    ingredients: [],
+    expect(nextState).toEqual({
+      bun: null,
+      ingredients: [],
+    });
   });
-});
 
-test('setBun: сохраняет булку', () => {
-  const previousState = { bun: null, ingredients: [] };
-  const action = setBun(bun);
-  const nextState = constructorSliceReducer(previousState, action);
+  test('setBun: сохраняет булку', () => {
+    const previousState = { bun: null, ingredients: [] };
+    const action = setBun(bun);
+    const nextState = constructorSliceReducer(previousState, action);
 
-  expect(nextState).toEqual({
-    bun,
-    ingredients: [],
+    expect(nextState).toEqual({
+      bun,
+      ingredients: [],
+    });
   });
-});
 
-test('addIngredient: добавляет ингредиент в массив ingredients', () => {
-  const previousState = { bun: null, ingredients: [] };
-  const action = addIngredient(ingredient);
-  const nextState = constructorSliceReducer(previousState, action);
+  test('addIngredient: добавляет ингредиент в массив ingredients', () => {
+    const previousState = { bun: null, ingredients: [] };
+    const action = addIngredient(ingredient);
+    const nextState = constructorSliceReducer(previousState, action);
 
-  expect(nextState).toEqual({
-    bun: null,
-    ingredients: [ingredient],
+    expect(nextState).toEqual({
+      bun: null,
+      ingredients: [ingredient],
+    });
   });
-});
 
-test('removeIngredient: удаляет ингредиент из массива ingredients', () => {
-  const previousState = { bun: null, ingredients: [ingredient, secondIngredient] };
-  const action = removeIngredient(secondIngredient.id);
-  const nextState = constructorSliceReducer(previousState, action);
+  test('removeIngredient: удаляет ингредиент из массива ingredients', () => {
+    const previousState = { bun: null, ingredients: [ingredient, secondIngredient] };
+    const action = removeIngredient(secondIngredient.id);
+    const nextState = constructorSliceReducer(previousState, action);
 
-  expect(nextState).toEqual({
-    bun: null,
-    ingredients: [ingredient],
+    expect(nextState).toEqual({
+      bun: null,
+      ingredients: [ingredient],
+    });
   });
-});
 
-test('moveIngredient: меняет порядок в ingredients', () => {
-  const previousState = { bun: null, ingredients: [ingredient, secondIngredient] };
-  const action = moveIngredient({ from: 0, to: 1 });
-  const nextState = constructorSliceReducer(previousState, action);
+  test('moveIngredient: меняет порядок в ingredients', () => {
+    const previousState = { bun: null, ingredients: [ingredient, secondIngredient] };
+    const action = moveIngredient({ from: 0, to: 1 });
+    const nextState = constructorSliceReducer(previousState, action);
 
-  expect(nextState.ingredients).toEqual([secondIngredient, ingredient]);
-});
+    expect(nextState.ingredients).toEqual([secondIngredient, ingredient]);
+  });
 
-test('clearConstructor: очищает конструктор', () => {
-  const previousState = { bun, ingredients: [ingredient] };
-  const action = clearConstructor();
-  const nextState = constructorSliceReducer(previousState, action);
+  test('clearConstructor: очищает конструктор', () => {
+    const previousState = { bun, ingredients: [ingredient] };
+    const action = clearConstructor();
+    const nextState = constructorSliceReducer(previousState, action);
 
-  expect(nextState).toEqual({
-    bun: null,
-    ingredients: [],
+    expect(nextState).toEqual({
+      bun: null,
+      ingredients: [],
+    });
   });
 });
